@@ -1,0 +1,64 @@
+<div class="text-center">
+   <h1 class="display-4">Hey, @ViewBag.User.FirstName</h1>
+</div>
+
+<br>
+
+<h3>Dojo Activity Center</h3>
+
+<br>
+
+<table class="table table-sm table-bordered" style="background-color: #eee;">
+
+   <tr>
+      <th>Activity</th>
+      <th>Date and Time</th>
+      <th>Duration</th>
+      <th>Event Coordinator</th>
+      <th>No. of Participants</th>
+      <th>Actions</th>
+   </tr>
+   @foreach(var plan in ViewBag.plans)
+   {
+      if(plan.Date > DateTime.Now)
+      {
+         <tr>
+            <td><a href="/details/@plan.PlanId">@plan.Title</a></td>
+            <td>@plan.Date</td>
+            <td>@plan.Duration @plan.DurationHour</td>
+            <td>@plan.PlannerName</td>
+            <td>@plan.Participants.Count</td>
+            @if(plan.PlannerId == ViewBag.User.UserId)
+            {
+               <td><a href="/delete/@plan.PlanId">Delete</a></td>
+            }
+            else
+            {
+               bool isGoing = false;
+               foreach(var participant in plan.Participants)
+               {
+                  if(participant.UserId == ViewBag.User.UserId)
+                  {
+                     isGoing = true;
+                  }
+               }
+               if(isGoing)
+               {
+                  <td><a href="/leave/@plan.PlanId/@ViewBag.User.UserId">Leave</a></td>
+               }
+               else
+               {
+                  <td><a href="/join/@plan.PlanId/@ViewBag.User.UserId">Join</a></td>
+               }
+            }   
+         </tr>
+      }
+   }
+
+</table>
+
+<br>
+
+<div class="text-right">
+   <a href="/newplan" class="btn btn-outline-primary">Add New Activity</a>
+</div>

@@ -1,0 +1,21 @@
+@model LoginUser
+
+<h3>Login</h3>
+
+<form action="/login" method="post">
+
+   <div class="form-group">
+      <span asp-validation-for="LoginEmail"></span>
+      <input type="text" name="LoginEmail" class="form-control" placeholder="Email Address" style="background-color: #eee;">
+   </div>
+
+   <div class="form-group">
+      <span asp-validation-for="LoginPassword"></span>
+      <input type="password" name="LoginPassword" class="form-control" placeholder="Password" style="background-color: #eee;">
+   </div>
+
+   <div class="text-right">
+      <input type="submit" value="Login" class="btn btn-outline-primary">
+   </div>
+
+</form>

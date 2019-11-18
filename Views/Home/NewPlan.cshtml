@@ -1,0 +1,62 @@
+@model Plan
+
+<div class="text-center">
+   <h3>Create an Activity</h3>
+</div>
+
+<br>
+
+<form action="/addplan" method="post">
+
+   <div class="row" style="width: 75%; margin: auto;">
+      <div class="col-sm-6">
+         <div class="form-group">
+            <label>Title:</label>
+            <input type="text" name="Title" class="form-control" placeholder="What is this activity called?" style="background-color: #eee;">
+            <span asp-validation-for="Title"></span>
+         </div>
+
+         <div class="form-group">
+            <label>Date:</label>
+            <input asp-for="Date" class="form-control" style="background-color: #eee;">
+            <span asp-validation-for="Date"></span>
+         </div>
+
+         <div class="form-group">
+            <label>Duration</label>
+            <br>
+            <input type="text" name="Duration" class="form-control" placeholder="How long is this going to be?" style="background-color: #eee; width: 70%; display: inline-block; vertical-align: top;">
+            <span asp-validation-for="Duration"></span>
+            
+            <select name="DurationHour" class="form-control" style="background-color: #eee; width: 28%; display: inline-block; margin-left: 3px;">
+               <option>minute(s)</option>
+               <option>hour(s)</option>
+               <option>day(s)</option>
+            </select>
+            <span asp-validation-for="DurationHour"></span>
+         </div>
+
+         <div class="form-group">
+            <label>Description</label>
+            <textarea name="Description" class="form-control" placeholder="Give a description so we know what we're doing here..." style="background-color: #eee;" cols="30" rows="5"></textarea>
+            <span asp-validation-for="Description"></span>
+         </div>
+
+         <br>
+
+         <div class="text-right">
+            <input type="submit" value="Create Activity" class="btn btn-outline-primary">
+         </div>
+      </div>
+
+      <div class="col-sm-6">
+         <div style="border: 1px solid #ced4da; padding: 15px;">
+            <p>Hey there,</p>
+            <p>I want to know what's going on, where I have to be and what time, and how long I really have to be there for. Don't leave out any details, I need to know everything so I can decide if I want to go or not.</p>
+            <p>Thank you so much.</p>
+            <p style="margin: 0px;">I'll see you there, maybe.</p>
+         </div>
+      </div>
+   </div>
+
+</form>

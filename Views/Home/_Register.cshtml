@@ -1,0 +1,36 @@
+@model User
+
+<h3>Register</h3>
+
+<form action="/register" method="post">
+
+   <div class="form-group">
+      <input type="text" name="FirstName" class="form-control" placeholder="First Name" style="background-color: #eee;">
+      <span asp-validation-for="FirstName"></span>
+   </div>
+
+   <div class="form-group">
+      <input type="text" name="LastName" class="form-control" placeholder="Last Name" style="background-color: #eee;">
+      <span asp-validation-for="LastName"></span>
+   </div>
+
+   <div class="form-group">
+      <input type="text" name="Email" class="form-control" placeholder="Email Address" style="background-color: #eee;">
+      <span asp-validation-for="Email"></span>
+   </div>
+
+   <div class="form-group">
+      <input type="password" name="Password" class="form-control" placeholder="Password" style="background-color: #eee;">
+      <span asp-validation-for="Password"></span>
+   </div>
+
+   <div class="form-group">
+      <input type="password" name="Confirm" class="form-control" placeholder="Confirm Password" style="background-color: #eee;">
+      <span asp-validation-for="Confirm"></span>
+   </div>
+
+   <div class="text-right">
+      <input type="submit" value="Register" class="btn btn-outline-primary">
+   </div>
+
+</form>

@@ -1,0 +1,47 @@
+<div class="text-center">
+   <h1 class="display-4">This is the plan</h1>
+   <h3>@ViewBag.Plan.Title</h3>
+
+   <br>
+
+   @if(ViewBag.Plan.PlannerId == ViewBag.User.UserId)
+   {
+      <a href="/delete/@ViewBag.Plan.PlanId" class="btn btn-outline-primary">Delete</a>
+   }
+   else
+   {
+      bool isGoing = false;
+      foreach(var participant in ViewBag.Plan.Participants)
+      {
+         if(participant.UserId == ViewBag.User.UserId)
+         {
+            isGoing = true;
+         }
+      }
+      if(isGoing)
+      {
+         <a href="/leave/@ViewBag.Plan.PlanId/@ViewBag.User.UserId" class="btn btn-outline-primary">Leave</a>
+      }
+      else
+      {
+         <a href="/join/@ViewBag.Plan.PlanId/@ViewBag.User.UserId" class="btn btn-outline-primary">Join</a>
+      }
+   }
+
+   <br><br>
+
+   <div style="border: 1px solid #ced4da; padding: 15px; display: inline-block; background-color: #eee; width: 50%;">
+      <p>Date and Time: @ViewBag.Plan.Date</p>
+      <p>Duration: @ViewBag.Plan.Duration @ViewBag.Plan.DurationHour</p>
+      <p>Event Coordinator: @ViewBag.Plan.PlannerName</p>
+      <p style="margin: 0px; text-align: left;">Description: @ViewBag.Plan.Description</p>
+   </div>
+   
+   <br><br>
+
+   <h5>The Guest List:</h5>
+   @foreach(var participant in ViewBag.Participants.Participants)
+   {
+      <p>@participant.Planner.FirstName @participant.Planner.LastName</p>
+   }
+</div>
